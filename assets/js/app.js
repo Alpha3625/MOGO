@@ -2,9 +2,7 @@ $(function() {
    
     var header = $("#header"),
         main_section = $("#main_section").innerHeight(),
-        scrollOffset = $(window).scrollTop();
-    
-
+        scrollOffset = $(window).scrollTop();  
 
     // Fixed Header
     checkScroll(scrollOffset);
@@ -49,8 +47,8 @@ $(function() {
 $("#nav_toggle").on("click", function(event) {
   event.preventDefault();
 
-  $(this).toggleClass("active")
-  $("#nav").toggleClass("active")
+  $(this).toggleClass("active");
+  $("#nav").toggleClass("active");
 })
 
 
@@ -62,17 +60,16 @@ $("[data-collapse]").on("click", function(event) {
       var $this = $(this),
           blockId = $this.data('collapse');
 
-      $(blockId).slideToggle("active");
+      $(this).toggleClass("active");
+      $(blockId).slideToggle();
 });
-
-
 
 // Slider
 $("[data-slider]").slick({
     Infinity: true,
     fade: false,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 2,
 });
 
 });

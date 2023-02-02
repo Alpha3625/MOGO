@@ -67,10 +67,6 @@ a {
   transform: translate3d(0, 0, 0);
 }
 
-.header.active {
-  background-color: #eb8b8d;
-}
-
 .header_inner {
   display: flex;
   justify-content: space-between;
@@ -177,9 +173,7 @@ a {
 
 .clients_job_title::after,
 .map_title::after,
-.testimonial_author::before,
-.quote_author::before,
-.reviews_job_title::after,
+.reviews_author::before,
 .section_title::after,
 .main_title::after {
   display: block;
@@ -508,7 +502,6 @@ a {
 
 .accordion_item .accordion_header::after {
   transform: translateY(-50%) rotate(135deg);
-  margin-top: 5px;
 }
 
 .accordion_item .accordion_header::after {
@@ -562,25 +555,23 @@ a {
   transform: translateY(-50%);
 }
 
-//____________________________________________________________________Quote
-//____________________________________________________________________Testimonial
-.quote,
-.testimonial {
-  padding: 0 110px 0;
+//____________________________________________________________________Reviews
+
+.reviews {
   position: relative;
 }
 
-.quote {
-  padding-top: 70px;
+.reviews .slick-slider {
+  padding: 0 110px;
 }
 
-.quote_item, .testimonial_item {
+.reviews_item {
   min-height: 210px;
   padding-left: 235px;
   position: relative;
 }
 
-.quote_icon {
+.reviews_icon {
   padding: 40px;
   border: 3px solid #aee0d2;
 
@@ -590,10 +581,10 @@ a {
   z-index: 1;
 }
 
-.testimonial_photo {
+.reviews_photo {
   display: block;
-  width: 190px;
-  height: 190px;
+  width: 210px;
+  height: 210px;
 
   border-radius: 50%;
   border: 3px solid #aee0d2;
@@ -604,42 +595,47 @@ a {
   z-index: 1;
 }
 
-.testimonial_author,
-.quote_author {
+.reviews_author {
   font-family: cursive;
   color: #333;
   font-size: 20px;
 }
 
-.testimonial_author::before,
-.quote_author::before {
+.reviews_author::before {
   display: inline-block;
   vertical-align: middle;
   margin: 0 10px 0 0;
   background-color: #d98080;
 }
 
-.testimonial_text,
-.quote_text {
+.reviews_text {
   color: #999;
   font-size: 20px;
   font-weight: 300;
   font-style: italic;
   margin-bottom: 15px;
+  padding-top: 15px;
 }
 
-.testimonial_btn,
-.quote_btn {
+.slick-arrow {
+  display: block;
   font-size: 0;
   color: transparent;
+  cursor: pointer;
+
+  border: 0;
+  background: none;
+
   position: absolute;
-  top: 48%;
+  top: 30%;
   z-index: 1;
   transform: translateY(-50%);
-}
 
-.testimonial_btn::after,
-.quote_btn::after {
+  &:focus {
+    outline: 0;
+  }
+
+  &::after {
   content: "";
   display: block;
   height: 16px;
@@ -647,15 +643,14 @@ a {
   border-top: 2px solid #ccc;
   border-left: 2px solid #ccc;
 }
+}
 
-.testimonial_btn--prev,
-.quote_btn--prev {
+.slick-prev {
   left: 0;
   transform: rotate(-45deg);
 }
 
-.testimonial_btn--next,
-.quote_btn--next {
+.slick-next {
   right: 0;
   transform: rotate(135deg);
 }
@@ -1285,18 +1280,16 @@ button[type=submit]:hover {
     margin-bottom: 0;
   }
 
-  /*....Testimonial-Quote....*/
-  .testimonial {
+  /*....Reviews....*/
+  .reviews .slick-slider {
     padding: 0 60px;
   }
-
-  .testimonial_item,
-  .quote_item {
+  .reviews_item {
     padding-left: 175px;
   }
 
-  .testimonial_photo,
-  .quote_icon {
+  .reviews_photo,
+  .reviews_icon {
     width: 150px;
     height: 150px;
     top: 0;
@@ -1472,29 +1465,26 @@ button[type=submit]:hover {
     width: 50%;
   }
 
-  /*....Testimonial-Quote....*/
-  .quote {
+  /*....Reviews....*/
+  .reviews {
     padding: 0 60px;
   }
 
-  .testimonial_photo,
-  .quote_icon {
+  .reviews_photo,
+  .reviews_icon {
     position: static;
     margin: 0 auto 20px;
   }
 
-  .testimonial_item,
-  .quote_item {
+  .reviews_item {
     padding-left: 0;
   }
 
-  .testimonial_text,
-  .quote_text {
+  .reviews_text {
     font-size: 16px;
   }
 
-  .testimonial_author,
-  .quote_author {
+  .reviews_author {
     font-size: 20px;
   }
 
@@ -1619,14 +1609,12 @@ button[type=submit]:hover {
     right: -80px;
   }
 
-  /*....Testimonial-Quote....*/
-  .testimonial,
-  .quote {
+  /*....Reviews....*/
+  .reviews .slick-slider {
     padding: 0;
   }
 
-  .testimonial_btn,
-  .quote_btn {
+  .slick-arrow {
     top: 18%;
   }
 
