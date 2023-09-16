@@ -1,0 +1,86 @@
+@use '../base/variables.scss'as var;
+@use '../mixins/mixins.scss'as mixin;
+
+.clients {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 50%;
+    margin-bottom: 60px;
+    padding: 0 45px 0 175px;
+    position: relative;
+  }
+
+  &__photo {
+    display: block;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    z-index: 1;
+  }
+
+  &__name {
+    margin-bottom: 5px;
+    color: var.$text-black;
+    text-transform: uppercase;
+  }
+
+  &__job {
+    color: var.$text-black;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+
+    &::after {
+      margin: 18px 0;
+      @include mixin.underline;
+    }
+  }
+
+  &__text {
+    color: var.$pearl-light-gray;
+  }
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 990px) {
+
+  .clients {
+    max-width: 600px;
+    margin: 0 auto;
+
+    &__item {
+      width: 100%;
+      padding-right: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .clients {
+    text-align: center;
+
+    &__item {
+      padding-left: 0;
+    }
+
+    &__photo {
+      position: static;
+      margin: 0 auto 10px;
+    }
+
+    &__job::after {
+      margin: 18px auto;
+    }
+  }
+}

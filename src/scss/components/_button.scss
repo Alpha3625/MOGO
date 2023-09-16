@@ -1,0 +1,18 @@
+@use '../base/variables.scss'as var;
+
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var.$primary-color;
+  border: 3px solid var.$primary-color;
+  padding: 8px 30px;
+  transition: background .1s linear, color .1s linear;
+
+  &:hover {
+    color: var.$text-black;
+    background-color: var.$primary-color;
+  }
+}

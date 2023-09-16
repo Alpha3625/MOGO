@@ -1,0 +1,142 @@
+@use '../base/variables.scss'as var;
+
+.header {
+  padding-top: 30px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+
+  &.fixed {
+    padding: 10px 0;
+    background-color: var.$secondary-color;
+    box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+    transform: translate3d(0, 0, 0);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  color: var.$primary-color;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.nav__link {
+  display: inline-block;
+  color: var.$primary-color;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 0 25px;
+  transition: opacity 0.1s linear;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    color: var.$yellow;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    width: 100%;
+    border-bottom: 3px solid var.$yellow;
+    opacity: 0;
+    padding-top: 5px;
+  }
+
+  &:hover::after,
+  &.active::after {
+    opacity: 1;
+  }
+}
+
+//__________________________________________________________Nav-toggle
+.nav-toggle {
+  display: none;
+  font-size: 30px;
+  margin: 0;
+  border: none;
+  background: none;
+  color: var.$primary-color;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.active {
+    transform: rotate(90deg);
+    transition: .2s linear;
+  }
+
+  &:not(.active) {
+    transition: .2s linear;
+  }
+
+  &:hover {
+    color: var.$yellow;
+  }
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 770px) {
+
+  //_______________Header
+  .header {
+    padding-top: 10px;
+  }
+
+  //_______________Nav
+  .nav {
+    display: none;
+    width: 100%;
+    background-color: var.$secondary-color;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    &>a {
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+    }
+
+    &__link {
+      display: none;
+    }
+  }
+
+  //_______________Nav-toggle
+
+  .nav-toggle {
+    display: block;
+
+    &.active {
+      color: var.$yellow;
+    }
+  }
+
+  .nav.active {
+    display: block;
+  }
+
+  .nav__link {
+    display: block;
+    margin: 0;
+    padding: 8px 20px;
+  }
+}

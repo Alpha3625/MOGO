@@ -1,0 +1,155 @@
+@use '../base/variables.scss'as var;
+@use '../mixins/mixins.scss'as mixin;
+
+.slider {
+  position: relative;
+
+  &__item {
+    min-height: 210px;
+    padding-left: 235px;
+    position: relative;
+  }
+  
+  &__icon {
+    padding: 40px;
+    border: 3px solid var.$dusty-blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  &__photo {
+    display: block;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    border: 3px solid var.$dusty-blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  &__author {
+    font-family: cursive;
+    color: var.$text-black;
+    font-size: 20px;
+    &::before {
+      @include mixin.underline;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 10px 0 0;
+    }
+  }
+  
+  &__text {
+    color: var.$pearl-light-gray;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 15px;
+    padding-top: 15px;
+  }
+}
+
+.slider .slick-slider {
+  padding: 0 110px;
+}
+
+.single-item {
+  width: 1366px;
+  overflow: hidden;
+}
+
+.slick-arrow {
+  display: block;
+  font-size: 0;
+  color: transparent;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  transform: translateY(-50%);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    height: 16px;
+    width: 16px;
+    border-top: 2px solid var.$light-telegray;
+    border-left: 2px solid var.$light-telegray;
+  }
+}
+
+.slick-prev {
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.slick-next {
+  right: 0;
+  transform: rotate(135deg);
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 990px) {
+
+  .slider .slick-slider {
+    padding: 0 60px;
+  }
+
+  .slider__item {
+    padding-left: 175px;
+  }
+
+  .slider__photo,
+  .slider__icon {
+    width: 150px;
+    height: 150px;
+    top: 0;
+  }
+}
+
+
+@media screen and (max-width: 770px) {
+
+  .slider {
+    padding: 0 60px;
+  }
+
+  .slider__photo,
+  .slider__icon {
+    position: static;
+    margin: 0 auto 20px;
+  }
+
+  .slider__item {
+    padding-left: 0;
+  }
+
+  .slider__text {
+    font-size: 16px;
+  }
+
+  .slider__author {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .slider .slick-slider {
+    padding: 0;
+  }
+
+  .slick-arrow {
+    top: 18%;
+  }
+}

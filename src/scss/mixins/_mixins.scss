@@ -1,0 +1,9 @@
+@use '../base/variables.scss' as var;
+
+@mixin underline {
+    display: block;
+    content: "";
+    height: 3px;
+    width: 60px;
+    background-color: var.$secondary-color;
+}

@@ -1,0 +1,133 @@
+@use '../base/variables.scss'as var;
+@use '../mixins/mixins.scss'as mixin;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  min-height: 820px;
+  position: relative;
+  background: url('../img/intro.jpg') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  &__content {
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  &__title {
+    line-height: 1;
+    font-size: 150px;
+    text-transform: uppercase;
+    &::after {
+      @include mixin.underline;
+      margin: 60px auto 50px;
+      background-color: var.$primary-color;
+    }
+  }
+
+  &__suptitle {
+    font-size: 72px;
+    text-transform: none;
+    font-family: cursive;
+  }
+}
+
+//___________________________________________Slider
+
+.main__slider {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  margin-top: 50px;
+
+  &-item {
+    content: "";
+    display: block;
+    width: 280px;
+    border-top: 3px solid var.$primary-color;
+    font-weight: 500;
+    margin: 0 15px;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  &-item.active::before {
+    display: block;
+    content: "";
+    height: 3px;
+    width: 70px;
+    background-color: var.$secondary-color;
+    position: absolute;
+    top: -3px;
+    left: 0;
+    z-index: 1;
+  }
+
+  &-num {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 1230px) {
+
+  .main__suptitle {
+    font-size: 52px;
+  }
+
+  .main__title {
+    font-size: 120px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+
+  .main__suptitle {
+    font-size: 32px;
+  }
+
+  .main__title {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+
+  //_______________Main
+  .main {
+    min-height: 650px;
+
+    &__suptitle {
+      font-size: 25px;
+    }
+
+    &__title {
+      font-size: 60px;
+    }
+  }
+
+  //_______________Slider
+  .main__slider-text {
+    display: none;
+  }
+
+  .main__slider-item.active::before {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .main__suptitle {
+    font-size: 22px;
+  }
+
+  .main__title {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,82 @@
+@use '../base/variables.scss'as var;
+
+.works {
+  display: flex;
+
+  &__col {
+    flex: 1 1 0;
+  }
+
+  &__item {
+    position: relative;
+    background: var.$image-filter;
+  }
+
+  &__item:hover .works__img {
+    opacity: .1;
+  }
+
+  &__item:hover .works__info {
+    opacity: 1;
+  }
+
+  &__img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    transform: opacity .2s linear;
+  }
+
+  &__info {
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    transform: translate3d(0, -50%, 0);
+    transform: opacity .2s linear;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 2;
+  }
+
+  &__icon {
+    font-size: 30px;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+  }
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 770px) {
+
+  .works {
+    flex-wrap: wrap;
+
+    &__col {
+      flex: none;
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .works {
+    justify-content: center;
+
+    &__col {
+      width: 100%;
+      max-width: 480px;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@use '../base/variables.scss'as *;
+@use '../mixins/mixins.scss'as *;
+
+.section {
+  padding: 91px 0 110px;
+
+  &__header {
+    width: 100%;
+    text-align: center;
+    max-width: 950px;
+    margin: 0 auto 80px;
+  }
+
+  &__title {
+    color: $text-black;
+    font-size: 30px;
+    text-transform: uppercase;
+
+    &::after {
+      margin: 42px auto;
+      @include underline;
+    }
+  }
+
+  &__suptitle {
+    color: $text-black;
+    font-size: 24px;
+    font-family: cursive;
+  }
+
+  &__text {
+    color: $light-gray;
+  }
+}
+
+.section--grey {
+  background-color: $smoky-white;
+}
+
+.section--slider {
+  padding: 70px 0 15px 0;
+}
+
+.section--statistics {
+  background-color: $dusty-blue;
+}
+
+.section--clients {
+  background: url('../img/whatPeopleSay/picture.jpg') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.section--devices {
+  margin-bottom: 40px;
+  padding-bottom: 0;
+  background: url('../img/feature/background.jpg') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  & .section__header {
+    margin-bottom: 0;
+  }
+}
+
+.section--work {
+  padding-bottom: 0;
+}
+
+.section--logo {
+  padding: 50px 0;
+}
+
+.section--map {
+  padding: 0;
+  background: url('../img/map/map.jpg') no-repeat center;
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 770px) {
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .section--devices {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .section__header {
+    margin-bottom: 50px;
+  }
+
+  .section__suptitle {
+    font-size: 20px;
+  }
+
+  .section__title {
+    font-size: 24px;
+
+    &::after {
+      margin: 20px auto;
+    }
+  }
+
+  .section__text {
+    padding: 5%;
+  }
+}

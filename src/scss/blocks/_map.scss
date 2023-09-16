@@ -1,0 +1,28 @@
+@use '../base/variables.scss' as var;
+@use '../mixins/mixins.scss' as mixin;
+
+.map {  
+  display: block;
+  width: 100%;
+  height: 200px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: var.$secondary-color;
+  padding-top: 50px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover :is(p, i) {
+    color: var.$mapActive-text;
+  }
+
+  &::after {
+    @include mixin.underline;
+    margin: 10px auto;
+  }
+
+  &:hover::after {
+    background-color: var.$mapActive-text;
+  }
+}

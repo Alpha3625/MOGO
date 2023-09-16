@@ -1,0 +1,67 @@
+@use '../base/variables.scss'as var;
+
+.accordion__item {
+  border: 1px solid var.$gainsborough;
+  margin-bottom: 10px;
+
+  & .accordion__content {
+    display: none;
+  }
+
+  & .accordion__header {
+    border-bottom-color: var.$gainsborough;
+
+    &::after.active {
+      transform: translateY(-50%) rotate(-45deg);
+      margin-top: 5px;
+    }
+  }
+}
+
+.accordion__header {
+  padding: 15px 20px 15px 65px;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 16px;
+    width: 16px;
+    border-top: 2px solid var.$light-telegray;
+    border-right: 2px solid var.$light-telegray;
+    transform: translateY(-50%) rotate(135deg);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    z-index: 1;
+  }
+}
+
+.accordion__content {
+  display: none;
+  padding: 15px 20px;
+  font-style: italic;
+}
+
+.accordion__icon {
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  z-index: 1;
+}
+
+.accordion__title {
+  color: var.$text-black;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.accordion__text {
+  color: var.$light-gray;
+  font-size: 14px;
+}

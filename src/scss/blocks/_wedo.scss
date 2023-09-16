@@ -1,0 +1,42 @@
+.wedo {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  position: relative;
+
+  &__item {
+    width: 50%;
+    padding: 0 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+//_________________________________________________________Media
+@media screen and (max-width: 990px) {
+
+  .wedo__item {
+    width: 100%;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .wedo__img {
+    margin: 0 auto;
+  }
+}
