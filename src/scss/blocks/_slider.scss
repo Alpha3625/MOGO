@@ -4,6 +4,9 @@
 .slider {
   position: relative;
 
+  &__inner {
+  }
+
   &__item {
     min-height: 210px;
     padding-left: 235px;
@@ -26,7 +29,7 @@
     border-radius: 50%;
     border: 3px solid var.$dusty-blue;
     position: absolute;
-    top: 0;
+    top: -40px;
     left: 0;
     z-index: 1;
   }

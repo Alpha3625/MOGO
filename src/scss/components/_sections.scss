@@ -2,7 +2,7 @@
 @use '../mixins/mixins.scss'as *;
 
 .section {
-  padding: 91px 0 110px;
+  padding: 90px 0 110px;
 
   &__header {
     width: 100%;
@@ -32,6 +32,43 @@
     color: $light-gray;
   }
 }
+
+//_________________________________________________________Media
+@media screen and (max-width: 770px) {
+
+  .section {
+    padding: 90px 0;
+  }
+
+  .section--devices {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .section__header {
+    margin-bottom: 50px;
+  }
+
+  .section__suptitle {
+    font-size: 20px;
+  }
+
+  .section__title {
+    font-size: 24px;
+
+    &::after {
+      margin: 20px auto;
+    }
+  }
+
+  .section__text {
+    padding: 5%;
+  }
+}
+//_________________________________________________________
+
 
 .section--grey {
   background-color: $smoky-white;
@@ -74,39 +111,4 @@
 .section--map {
   padding: 0;
   background: url('../img/map/map.jpg') no-repeat center;
-}
-
-//_________________________________________________________Media
-@media screen and (max-width: 770px) {
-
-  .section {
-    padding: 40px 0;
-  }
-
-  .section--devices {
-    padding-bottom: 0;
-  }
-}
-
-@media screen and (max-width: 575px) {
-
-  .section__header {
-    margin-bottom: 50px;
-  }
-
-  .section__suptitle {
-    font-size: 20px;
-  }
-
-  .section__title {
-    font-size: 24px;
-
-    &::after {
-      margin: 20px auto;
-    }
-  }
-
-  .section__text {
-    padding: 5%;
-  }
 }

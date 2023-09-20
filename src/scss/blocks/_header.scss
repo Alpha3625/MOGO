@@ -2,7 +2,9 @@
 
 .header {
   padding-top: 30px;
-  position: absolute;
+  transition: ease-in-out .8s;
+  position: fixed;
+  top: 0;
   right: 0;
   left: 0;
   z-index: 1000;
@@ -10,12 +12,9 @@
   &.fixed {
     padding: 10px 0;
     background-color: var.$secondary-color;
-    box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     transform: translate3d(0, 0, 0);
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    transition: ease-in-out .8s;
   }
 
   &__inner {
@@ -37,15 +36,8 @@
   font-size: 13px;
   text-transform: uppercase;
   margin: 0 25px;
-  transition: opacity 0.1s linear;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
+  cursor: pointer;
+  transition: opacity .3s linear;
 
   &:hover {
     color: var.$yellow;
@@ -60,9 +52,14 @@
     padding-top: 5px;
   }
 
-  &:hover::after,
+  &.active {
+    color: var.$yellow;
+    transition: opacity .3s linear;
+  }
+
   &.active::after {
     opacity: 1;
+    transition: opacity .3s linear;
   }
 }
 
@@ -74,6 +71,7 @@
   border: none;
   background: none;
   color: var.$primary-color;
+  transition: .2s linear;
   cursor: pointer;
 
   &:focus {
@@ -81,11 +79,8 @@
   }
 
   &.active {
+    color: var.$yellow;
     transform: rotate(90deg);
-    transition: .2s linear;
-  }
-
-  &:not(.active) {
     transition: .2s linear;
   }
 
@@ -106,13 +101,13 @@
   .nav {
     display: none;
     width: 100%;
-    background-color: var.$secondary-color;
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 100%;
     left: 0;
 
     &>a {
-      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
 
     &__link {
