@@ -1,83 +1,9 @@
-// $(function () {
-
-//   let header = $("#header"),
-//     main = $("#main").innerHeight(),
-//     scrollOffset = $(window).scrollTop();
-
-//   // Fixed Header
-//   checkScroll(scrollOffset);
-
-//   $(window).on("scroll", function () {
-//     scrollOffset = $(this).scrollTop();
-
-//     checkScroll(scrollOffset);
-//   });
-
-//   function checkScroll(scrollOffset) {
-
-//     if (scrollOffset > main) {
-//       header.addClass("fixed");
-//     } else {
-//       header.removeClass("fixed");
-//     }
-//   }
-
-
-
-//   // Smooth scroll
-//   $("[data-scroll]").on("click", function (event) {
-//     event.preventDefault();
-
-//     let $this = $(this),
-//       blockId = $(this).data('scroll'),
-//       blockOffset = $(blockId).offset().top;
-
-//     $("#nav a").removeClass("active");
-//     $this.addClass("active");
-
-//     $("html, body").animate({
-//       scrollTop: blockOffset
-//     }, 500);
-//   })
-
-
-
-//   // Menu nav toggle
-//   $("#nav-toggle").on("click", function (event) {
-//     event.preventDefault();
-
-//     $(this).toggleClass("active");
-//     $("#nav").toggleClass("active");
-//   })
-
-
-
-//   // Collapse
-//   $("[data-collapse]").on("click", function (event) {
-//     event.preventDefault();
-
-//     let $this = $(this),
-//       blockId = $this.data('collapse');
-//       $(".accordion__header::after").toggleClass("accordion__header::after active");
-//       $(this).addClass("active");
-//     $(blockId).slideToggle();
-//   });
-
-//   // Slider
-//   $('.single-item').slick({
-//       Infinity: true,
-//       fade: false,
-//       slidesToShow: 1,
-//       slidesToScroll: 1,
-//   });
-// });
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // const header = document.getElementById("header");
   const main = document.getElementById("main").offsetHeight;
   // let scrollOffset = window.pageYOffset;
+
+
 
   // Fixed Header
   window.onscroll = function showHeader() {
@@ -89,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
       header.classList.remove('fixed');
     }
   }
+
+
 
   // Smooth scroll
   const scrollLinks = document.querySelectorAll("[data-scroll]");
@@ -112,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+
+
+
   // Menu nav toggle
   const navToggle = document.getElementById("nav-toggle");
   const nav = document.getElementById("nav");
@@ -122,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     this.classList.toggle("active");
     nav.classList.toggle("active");
   });
+
+
 
   // Collapse
   const collapseLinks = document.querySelectorAll("[data-collapse]");
@@ -140,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
       block.style.display = block.style.display === "none" ? "block" : "none";
     });
   });
+
+
+
 
   // Slider
   const slider = document.querySelector('.single-item');
@@ -179,69 +115,153 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Sticky Header on Scroll
-//   window.addEventListener("scroll", function () {
-//     let sc = window.pageYOffset;
-//     const header = document.getElementById("header");
+// Исходные данные по слайдеру (const)
+const sliderImages = document.querySelectorAll('.slider__img'),
+    sliderLine = document.querySelector('.slider__line'),
+    sliderDots = document.querySelectorAll('.slider__dot'),
+    sliderBtnNext = document.querySelector('.slider__btn-next'),
+    sliderBtnPrev = document.querySelector('.slider__btn-prev');
+        
 
-//     if (sc > 100) {
-//       header.classList.add("small");
-//     } else {
-//       header.classList.remove("small");
-//     }
-//   });
 
-//   // Smooth scroll
-//   const scrollLinks = document.querySelectorAll("[data-scroll]");
-//   scrollLinks.forEach(function (scrollLink) {
-//     scrollLink.addEventListener("click", function (event) {
-//       event.preventDefault();
+// Переменные    
+let sliderCount = 0,
+    sliderWidth;
 
-//       const blockId = this.getAttribute("data-scroll");
-//       const blockElement = document.querySelector(blockId);
+// Адаптивность слайдера
+window.addEventListener('resize', showSlide);
 
-//       document.querySelectorAll("#nav a").forEach(function (navLink) {
-//         navLink.classList.remove("active");
-//       });
+// Кнопки листания слайдов вперед и назад
+sliderBtnNext.addEventListener('click', nextSlide);
+sliderBtnPrev.addEventListener('click', prevSlide);
 
-//       this.classList.add("active");
+// Прозрачность по умолчанию
+sliderBtnPrev.style.opacity = 0.5;
+sliderBtnNext.style.opacity = 1;
 
-//       window.scrollTo({
-//         top: blockElement.offsetTop,
-//         behavior: "smooth",
-//       });
-//     });
-//   });
+// Функции ==================
+// Задает нужную ширину картинки и sliderLine
+function showSlide() {
+    sliderWidth = document.querySelector('.slider').offsetWidth;
+    sliderLine.style.width = sliderWidth * sliderImages.length + 'px';
+    sliderImages.forEach(item => item.style.width = sliderWidth + 'px');
 
-//   // Menu nav toggle
-//   const navToggle = document.getElementById("nav-toggle");
-//   navToggle.addEventListener("click", function (event) {
-//     event.preventDefault();
+    rollSlider();
+}
+showSlide();
 
-//     this.classList.toggle("active");
-//     document.getElementById("nav").classList.toggle("active");
-//   });
+// Перелистывает слайд вперед
+function nextSlide() {
+    sliderCount++;
+    
+    if(sliderCount > sliderImages.length - 1) {
+        sliderCount -= 1;
+    }
 
-//   // Collapse
-//   const collapseLinks = document.querySelectorAll("[data-collapse]");
-//   collapseLinks.forEach(function (collapseLink) {
-//     collapseLink.addEventListener("click", function (event) {
-//       event.preventDefault();
-//       this.classList.toggle("active");
-//     });
-//   });
+    // Изменение стиля кнопки "sliderBtnNext", если достигли последнего слайда
+    if(sliderCount === sliderImages.length - 1) {
+        sliderBtnNext.style.opacity = 0.5;
+    }
 
-//   // Slider
-//   const sliders = document.querySelectorAll("[data-slider]");
-//   sliders.forEach(function (slider) {
-//     // Инициализация Slick Slider (если у вас есть библиотека Slick Slider)
-//     new Glide(slider, {
-//       type: "carousel",
-//       startAt: 0,
-//       perView: 1,
-//       focusAt: "center",
-//       gap: 0,
-//     }).mount();
-//   });
-// });
+    // Изменение стиля кнопки "sliderBtnPrev", если переключились с первого слайдера
+    if (sliderImages.length !== 0) {
+        sliderBtnPrev.style.opacity = 1;
+    }
+
+    rollSlider();
+    thisSlide(sliderCount);
+}
+
+// Перелистывает слайд назад
+function prevSlide() {
+    sliderCount--;
+
+    if(sliderCount < 0) {
+        sliderCount += 1;
+    }
+
+    // Изменение стиля кнопки "sliderBtnPrev", если достигли первого слайда
+    if (sliderCount === 0) {
+        sliderBtnPrev.style.opacity = 0.5;
+    }
+
+    // Возврат стиля кнопки "sliderBtnNextt" при возврате назад с последнего слайда
+    if (sliderCount !== sliderImages.length - 1) {
+        sliderBtnNext.style.opacity = 1;
+    }
+
+    rollSlider();
+    thisSlide(sliderCount);
+}
+
+// Задает шаг перемещения слайдов
+function rollSlider() {
+    sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
+}
+
+// Указывает как слайд по счету активен
+function thisSlide(index) {
+    sliderDots.forEach(item => item.classList.remove('active-dot'));
+    sliderDots[index].classList.add('active-dot');
+}
+
+// Вешает клик на dot
+sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        sliderCount = index;
+        rollSlider();
+        thisSlide(sliderCount);
+    })
+})
+
+
+// Модальное окно с формой
+const openModal = document.getElementById('open-modal'),
+    closeModal = document.getElementById('close-modal'),
+    modal = document.getElementById('modal');
+
+openModal.onclick = () => {
+    modal.style.display = "block";
+}
+
+closeModal.onclick = () => {
+    modal.style.display = "none";
+}
+
+
+
+
+
+
+let sliders = document.querySelectorAll('.slider');
+// sliders - список всех элементов с классом class="slider"
+// sliders[0] — первый элемент, sliders[1] — второй, sliders[i] — i-тый.
+
+for (let i = 0; i < sliders.length; i++) {
+  // Перебирает все, вызывает функцию для каждого.
+  init_slider(sliders[i]);
+}
+
+function init_slider(slider) {
+  // Значение slider: Очередной sliders[i], переданный при вызове функции.
+  
+  let slide = slider.querySelectorAll('.slide');
+  // Вместо document.query... Получается список всех class="slide"
+  // которые находятся где-то внутри текущего элемента slider.
+  
+  let next = slider.querySelector('.next');
+  // Кнопка next внутри этого slider.
+  
+  let i = 0;
+  // Номер текущего "открытого" слайда.
+  
+  next.addEventListener('click', function() {
+    slide[i].classList.remove('block');
+    // slide[i] - открытый слайд. Скрываем.
+    
+    i = (i + 1) % slide.length; // (*1)
+    
+    slide[i].classList.add('block');
+    // slide[i] - следующий слайд. Показываем.
+  });  
+}

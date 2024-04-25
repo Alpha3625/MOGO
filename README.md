@@ -1,3 +1,6 @@
-MOGO 
+# MOGO 
+## Реализован с использованием стека:
 
-https://artyomxxx.github.io/MOGO/
+[![My Skills](https://skillicons.dev/icons?i=html,sass,js,gulp)](https://skillicons.dev)
+
+## Ссылка: [Посмотреть](https://alpha3625.github.io/MOGO/)

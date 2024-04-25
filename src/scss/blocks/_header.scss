@@ -14,7 +14,7 @@
     background-color: var.$secondary-color;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     transform: translate3d(0, 0, 0);
-    transition: ease-in-out .8s;
+    transition: ease-in-out 300ms;
   }
 
   &__inner {
