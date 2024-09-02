@@ -1,5 +1,11 @@
 # MOGO 
-## Реализован с использованием стека:
+
+<img src="screenshot/MoGo.jpg" alt="MOGO" />
+
+## Описание
+...
+
+## Stack:
 
 [![My Skills](https://skillicons.dev/icons?i=html,sass,js,gulp)](https://skillicons.dev)
 
